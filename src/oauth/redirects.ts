@@ -1,7 +1,10 @@
 import { CURSOR_REDIRECT_URIS } from '../config';
 
-export function allowedRedirects(_env: NodeJS.ProcessEnv = process.env): string[] {
-  return [...CURSOR_REDIRECT_URIS];
+const CLAUDE_REDIRECT_URIS = ['https://claude.ai/api/mcp/auth_callback'];
+
+export function allowedRedirects(env: NodeJS.ProcessEnv = process.env): string[] {
+  const extra = (env.OAUTH_EXTRA_REDIRECT_URIS ?? '').split(',').map((s) => s.trim()).filter(Boolean);
+  return [...CURSOR_REDIRECT_URIS, ...CLAUDE_REDIRECT_URIS, ...extra];
 }
 
 export function canonicalizeRedirect(value: string): string {
