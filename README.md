@@ -8,7 +8,7 @@ Deploy on Vercel and set the variables from [`.env.example`](.env.example). The 
 
 ## Tools
 
-`list_accounts` · `get_balances` · `list_transactions` · `list_card_bills` · `spending_by_category` · `connection_status` · `current_bill` · `spending_room` · `monthly_summary` · `list_investments`
+`list_accounts` · `get_balances` · `list_transactions` · `list_card_bills` · `spending_by_category` · `connection_status` · `current_bill` · `spending_room` · `monthly_summary` · `list_investments` · `refresh_data` (asks Pluggy for a new sync, at most once per hour per item)
 
 ## License
 

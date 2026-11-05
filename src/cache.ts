@@ -31,6 +31,10 @@ export class TtlCache {
     this.store.set(key, { value, expiresAt: this.now() + ttlMs });
   }
 
+  clear(): void {
+    this.store.clear();
+  }
+
   get size(): number {
     return this.store.size;
   }

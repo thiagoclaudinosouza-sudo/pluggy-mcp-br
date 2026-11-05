@@ -59,6 +59,20 @@ export class PluggyBankingSource implements BankingSource {
     };
   }
 
+  async refreshItems() {
+    const results = [];
+    for (const itemId of this.itemIds) {
+      try {
+        const item = await this.client.refreshItem(itemId);
+        results.push({ itemId, connectorName: item.connectorName, requested: true, status: item.status, lastUpdatedAt: item.lastUpdatedAt, error: null });
+      } catch (error) {
+        const message = error instanceof Error ? error.message : 'Pluggy refused the update.';
+        results.push({ itemId, connectorName: null, requested: false, status: null, lastUpdatedAt: null, error: message.slice(0, 240) });
+      }
+    }
+    return results;
+  }
+
   async connectionStatus() {
     const items = [];
     for (const itemId of this.itemIds) {

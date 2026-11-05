@@ -1,4 +1,4 @@
-import type { BankingSource, NormalizedAccount, NormalizedBill, NormalizedInvestment, NormalizedItem, NormalizedTransaction } from './types';
+import type { BankingSource, NormalizedAccount, NormalizedBill, NormalizedInvestment, NormalizedItem, NormalizedTransaction, RefreshResult } from './types';
 import { calendarDay, canonicalCurrency, isOutflow, signedAmount } from './types';
 import { maskAccountNumber, maskCpf, maskDocument, maskSensitiveFreeText, isValidCpf } from '../privacy/mask';
 import { DATA_WARNING, fenceUntrusted, formatReais, money, UNTRUSTED_FIELD } from '../privacy/untrusted';
@@ -280,11 +280,28 @@ export function presentInvestments(source: BankingSource, investments: Normalize
   }, truncated);
 }
 
+export function presentRefresh(source: BankingSource, results: RefreshResult[]) {
+  return envelope(source, {
+    note:
+      'Asked Pluggy to sync each bank again. The sync runs in the background and usually takes a few minutes; read the data again later. ' +
+      'Pluggy accepts at most one manual update per item per hour, and each bank still decides how fresh its Open Finance data is.',
+    requested: results.filter((result) => result.requested).length,
+    items: results.map((result) => ({
+      itemId: result.itemId,
+      connector: result.connectorName,
+      requested: result.requested,
+      status: result.status,
+      last_update: result.lastUpdatedAt,
+      error: result.error,
+    })),
+  });
+}
+
 export function presentConnection(source: BankingSource, items: NormalizedItem[]) {
   const now = Date.now();
   return envelope(source, {
     update:
-      'Meu Pluggy refreshes the data about once every 24 hours. This connector does not ask the bank for a refresh and does not renew consent.',
+      'Meu Pluggy refreshes the data about once every 24 hours. The refresh_data tool can ask for a new sync (at most once per hour per item). This connector does not renew consent.',
     authorization:
       'The authorization for the MeuPluggy connector lasts 1 year. The date is in consentExpiresAt. Each bank inside Meu Pluggy has its own consent, separate from this one.',
     items: items.map((item) => {

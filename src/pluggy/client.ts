@@ -2,6 +2,8 @@ import { PLUGGY_API_ORIGIN } from '../config';
 import { TtlCache } from '../cache';
 import { canonicalCurrency, type NormalizedAccount, type NormalizedBill, type NormalizedInvestment, type NormalizedItem, type NormalizedTransaction, type Paged } from '../banking/types';
 
+const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+const ITEM_PATH = /^\/items\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const API_KEY_TTL_MS = 110 * 60 * 1000;
 export const PAGE_CAP = 20;
 
@@ -88,6 +90,25 @@ export class PluggyClient {
     };
   }
 
+  /**
+   * Asks Pluggy to sync one item with the institution again (PATCH /items/{id} with an empty body).
+   * It only starts a new read; it does not change credentials, consent or anything at the bank.
+   */
+  async refreshItem(itemId: string): Promise<NormalizedItem> {
+    if (!UUID.test(itemId) || !this.options.itemIds.includes(itemId)) throw new Error('Item not found.');
+    const response = await this.request('PATCH', `/items/${encodeURIComponent(itemId)}`, {}, true);
+    const raw = (await response.json()) as RawItem;
+    this.cache.clear();
+    return {
+      itemId: raw.id ?? itemId,
+      connectorName: raw.connector?.name ?? null,
+      status: raw.status ?? null,
+      consentExpiresAt: raw.consentExpiresAt ?? null,
+      lastUpdatedAt: raw.lastUpdatedAt ?? raw.updatedAt ?? null,
+      errorCode: raw.error?.code ?? null,
+    };
+  }
+
   private async getPages<T>(pathAndQuery: string): Promise<Paged<T>> {
     const rows: T[] = [];
     let page = 1;
@@ -130,13 +151,14 @@ export class PluggyClient {
     return body;
   }
 
-  private async request(method: 'GET' | 'POST', pathAndQuery: string, body: unknown, withKey: boolean): Promise<Response> {
+  private async request(method: 'GET' | 'POST' | 'PATCH', pathAndQuery: string, body: unknown, withKey: boolean): Promise<Response> {
     const url = new URL(pathAndQuery, PLUGGY_API_ORIGIN);
     if (url.origin !== PLUGGY_API_ORIGIN) {
       throw new Error('Pluggy host refused.');
     }
-    if (method !== 'GET' && !(method === 'POST' && url.pathname === '/auth')) {
-      throw new Error('This connector only reads from Pluggy, plus POST /auth.');
+    const refresh = method === 'PATCH' && ITEM_PATH.test(url.pathname) && url.search === '' && JSON.stringify(body) === '{}';
+    if (method !== 'GET' && !(method === 'POST' && url.pathname === '/auth') && !refresh) {
+      throw new Error('This connector only reads from Pluggy, plus POST /auth and an empty PATCH /items/{id} to ask for a new sync.');
     }
     const headers = new Headers({ Accept: 'application/json', 'User-Agent': 'pluggy-mcp-br/0.1.0' });
     if (body !== undefined) headers.set('Content-Type', 'application/json');

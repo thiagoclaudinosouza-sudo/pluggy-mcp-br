@@ -98,6 +98,16 @@ export interface BankingSource {
   listBills(accountId: string): Promise<Paged<NormalizedBill>>;
   listInvestments(): Promise<Paged<NormalizedInvestment>>;
   connectionStatus(): Promise<NormalizedItem[]>;
+  refreshItems(): Promise<RefreshResult[]>;
+}
+
+export interface RefreshResult {
+  itemId: string;
+  connectorName: string | null;
+  requested: boolean;
+  status: string | null;
+  lastUpdatedAt: string | null;
+  error: string | null;
 }
 
 export function canonicalCurrency(code: string | null | undefined): string | null {

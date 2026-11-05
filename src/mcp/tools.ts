@@ -10,6 +10,7 @@ import {
   presentCurrentBills,
   presentInvestments,
   presentMonthlySummary,
+  presentRefresh,
   presentSpendRoom,
   presentSpending,
   presentTransactions,
@@ -78,6 +79,7 @@ const TOOLS = [
   'spending_room',
   'monthly_summary',
   'list_investments',
+  'refresh_data',
 ] as const;
 
 export type ToolName = (typeof TOOLS)[number];
@@ -86,7 +88,7 @@ export const SERVER_INSTRUCTIONS =
   'Read-only bridge from the Grok Bot to Brazilian banking data via Pluggy (personal Meu Pluggy plan, Open Finance). ' +
   'This is not Open Finance itself and it does not move money: there is no Pix, no payment and no writing. ' +
   DATA_WARNING +
-  ' Pluggy refreshes the data about once every 24 hours ' +
+  ' Pluggy refreshes the data about once every 24 hours; refresh_data asks for a new sync (at most once per hour per item) ' +
   'and the connector authorization expires in one year (consentExpiresAt).';
 
 export function buildMcpServer(): McpServer {
@@ -200,6 +202,17 @@ export function registerBankingTools(server: McpServer): void {
     },
     async (args) => safeTool('list_investments', args),
   );
+  server.registerTool(
+    'refresh_data',
+    {
+      title: 'Refresh bank data',
+      description:
+        'Asks Pluggy to sync every bank again, so new transactions show up sooner. The sync runs in the background for a few minutes; read again afterwards. ' +
+        'At most once per hour per item. Does not move money and does not change anything at the bank.',
+      annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: true, openWorldHint: true },
+    },
+    async () => safeTool('refresh_data', {}),
+  );
 }
 
 async function safeTool(name: ToolName, args: unknown) {
@@ -299,6 +312,8 @@ async function runTool(name: ToolName, args: unknown, source: BankingSource, now
       const rows = parsed.type ? investments.rows.filter((investment) => investment.type === parsed.type) : investments.rows;
       return presentInvestments(source, rows, investments.truncated);
     }
+    case 'refresh_data':
+      return presentRefresh(source, await source.refreshItems());
   }
 }
 
