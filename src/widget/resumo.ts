@@ -12,10 +12,10 @@ import type { EnvLike } from '../config';
 const METAS: Record<string, { meta: number; emoji: string }> = {
   Mercado: { meta: 1200, emoji: '🛒' },
   'Comer fora e iFood': { meta: 400, emoji: '🍔' },
-  Transporte: { meta: 200, emoji: '🛴' },
+  Transporte: { meta: 200, emoji: '🚗' },
   Saúde: { meta: 100, emoji: '💊' },
   'Cuidados pessoais': { meta: 100, emoji: '💈' },
-  Lavanderia: { meta: 80, emoji: '🧺' },
+  Lavanderia: { meta: 80, emoji: '👕' },
 };
 
 /** Purchases split by hand on the dashboard (part of one purchase counted in another category). */
