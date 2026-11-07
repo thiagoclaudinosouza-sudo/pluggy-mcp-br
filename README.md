@@ -13,3 +13,8 @@ Deploy on Vercel and set the variables from [`.env.example`](.env.example). The 
 ## License
 
 MIT.
+
+
+## Widget do iPhone (`/widget`)
+
+`GET /widget` com `Authorization: Bearer <WIDGET_TOKEN>` devolve só o resumo do mês (quanto ainda dá para gastar das metas variáveis, por categoria). Não devolve transações e não muda nada. Sem `WIDGET_TOKEN` (mínimo 24 caracteres) nas variáveis de ambiente, o endereço fica desligado (503). Usado pelo script do Scriptable no iPhone.

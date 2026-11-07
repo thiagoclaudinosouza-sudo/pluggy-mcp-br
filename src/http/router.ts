@@ -6,6 +6,7 @@ import {
 } from '@modelcontextprotocol/server';
 import { ConfigError, READ_SCOPE, SERVER_NAME, authConfigured, resolvePublicOrigin } from '../config';
 import { handleMcp } from './mcp-http';
+import { handleWidget } from '../widget/resumo';
 import { handleAuthorize, handleRegister, handleToken } from './oauth-http';
 
 export async function handleRequest(request: Request): Promise<Response> {
@@ -53,6 +54,7 @@ async function route(request: Request): Promise<Response> {
   if (pathname === '/authorize') return handleAuthorize(request);
   if (pathname === '/token') return handleToken(request);
   if (pathname === '/mcp') return handleMcp(request);
+  if (pathname === '/widget') return handleWidget(request);
   return Response.json({ error: 'not_found' }, { status: 404 });
 }
 
