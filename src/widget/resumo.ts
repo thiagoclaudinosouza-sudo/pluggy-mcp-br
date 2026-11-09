@@ -18,10 +18,18 @@ const METAS: Record<string, { meta: number; emoji: string }> = {
   Lavanderia: { meta: 80, emoji: '👕' },
 };
 
-/** Purchases split by hand on the dashboard (part of one purchase counted in another category). */
-const DIVISOES: { transacao: string; valor: number; categoria: string }[] = [
-  { transacao: 'a75eb901-954a-4631-b0e2-df99a23f6e8c', valor: 8, categoria: 'Comer fora e iFood' },
-];
+/**
+ * Mirror of the dashboard's "divisoes" (parts of a purchase counted in another
+ * category) and "provisorios" (purchases logged from a receipt before the bank
+ * syncs). Updated together with the dashboard.
+ */
+import AJUSTES from './ajustes.json';
+type Divisao = { transacao: string; data: string; loja: string; valor_total: number; valor: number; categoria: string };
+type Provisorio = { id: string; data: string; conta: string; valor: number; descricao: string; categoria_banco: string };
+const DIVISOES = AJUSTES.divisoes as Divisao[];
+const PROVISORIOS = AJUSTES.provisorios as Provisorio[];
+const DIA = 864e5;
+const diaMs = (d: string) => Date.parse(d + 'T12:00:00-03:00');
 
 const MESES = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
 
@@ -78,15 +86,25 @@ export async function handleWidget(request: Request, env: EnvLike = process.env,
   const txs = await source.listTransactions({ from, to });
 
   const gasto: Record<string, number> = Object.fromEntries(Object.keys(METAS).map((k) => [k, 0]));
-  for (const t of txs.rows) {
-    if (!isOutflow(t)) continue;
-    const dt = calendarDay(t.date);
+  type Linha = { id: string; accountId: string; amount: number; description: string | null; category: string | null; dia: string };
+  const reais: Linha[] = txs.rows.filter((t) => isOutflow(t)).map((t) => ({ id: t.id, accountId: t.accountId, amount: t.amount, description: t.description ?? '', category: t.category, dia: calendarDay(t.date) }));
+  const pendentes: Linha[] = PROVISORIOS.filter((p) => {
+    const pd = diaMs(p.data);
+    if (now.getTime() - pd > 4 * DIA) return false;
+    return !reais.some((t) => t.accountId === p.conta && Math.abs(Math.abs(t.amount) - p.valor) <= 0.05 && Math.abs(diaMs(t.dia) - pd) <= 3 * DIA);
+  }).map((p) => ({ id: 'prov-' + p.id, accountId: p.conta, amount: -p.valor, description: p.descricao, category: p.categoria_banco || null, dia: p.data }));
+  let provisorios = 0;
+  for (const t of [...reais, ...pendentes]) {
+    const dt = t.dia;
     if (dt < from || dt > to) continue;
     const isCard = cards.has(t.accountId);
     const cat = categoria(t.description ?? '', t.category, isCard);
     if (!cat) continue;
+    if (t.id.startsWith('prov-')) provisorios++;
     let valor = Math.abs(t.amount);
-    for (const p of DIVISOES.filter((x) => x.transacao === t.id)) {
+    const desc = (t.description ?? '').toUpperCase();
+    const partes = DIVISOES.filter((x) => x.transacao === t.id || (x.data === dt && Math.abs(x.valor_total - Math.abs(t.amount)) <= 0.01 && desc.includes(x.loja.toUpperCase())));
+    for (const p of partes) {
       valor -= p.valor;
       if (p.categoria in gasto) gasto[p.categoria] += p.valor;
     }
@@ -123,6 +141,7 @@ export async function handleWidget(request: Request, env: EnvLike = process.env,
     ritmo_ideal: r2(dia / diasNoMes),
     categorias,
     bancos_atualizados_em: atualizado,
+    provisorios,
     gerado_em: now.toISOString(),
     truncado: txs.truncated || accounts.truncated || false,
   };

@@ -1,0 +1,70 @@
+{
+ "divisoes": [
+  {
+   "transacao": "a75eb901-954a-4631-b0e2-df99a23f6e8c",
+   "data": "2026-11-03",
+   "loja": "DIMED",
+   "valor_total": 108.17,
+   "valor": 8.0,
+   "categoria": "Comer fora e iFood"
+  },
+  {
+   "transacao": "f9806397-0e06-4434-905a-1ca2d255eeef",
+   "data": "2026-11-01",
+   "loja": "MERCADOLIVRE",
+   "valor_total": 232.0,
+   "valor": 232.0,
+   "categoria": "Compras e parcelas"
+  },
+  {
+   "transacao": "a1de8baf-98cd-46b5-96a3-02e5ed54659c",
+   "data": "2026-11-01",
+   "loja": "MERCADOLI",
+   "valor_total": 47.92,
+   "valor": 47.92,
+   "categoria": "Casa e compras"
+  },
+  {
+   "transacao": "975be981-8585-40ff-9830-f6ffe9724eeb",
+   "data": "2026-11-01",
+   "loja": "AMAZON",
+   "valor_total": 28.5,
+   "valor": 28.5,
+   "categoria": "Casa e compras"
+  },
+  {
+   "transacao": "",
+   "data": "2026-11-08",
+   "loja": "BISTEK",
+   "valor_total": 516.42,
+   "valor": 37.66,
+   "categoria": "Comer fora e iFood"
+  },
+  {
+   "transacao": "",
+   "data": "2026-11-08",
+   "loja": "MERCADO",
+   "valor_total": 367.0,
+   "valor": 367.0,
+   "categoria": "Casa e compras"
+  }
+ ],
+ "provisorios": [
+  {
+   "id": "bistek-2026-11-08",
+   "data": "2026-11-08",
+   "conta": "fbb02ba7-bbdd-4c4b-b936-0669b2f57f65",
+   "valor": 516.42,
+   "descricao": "BISTEK SUPERMERCADOS (aguardando banco)",
+   "categoria_banco": "Groceries"
+  },
+  {
+   "id": "parafusadeira-2026-11-08",
+   "data": "2026-11-08",
+   "conta": "5ecd3eb3-8e2f-4ee9-8470-f33d06fbded5",
+   "valor": 367.0,
+   "descricao": "MERCADO*MERCADOLIVRE (aguardando banco)",
+   "categoria_banco": ""
+  }
+ ]
+}
