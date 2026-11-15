@@ -95,6 +95,22 @@
    "valor_total": 7.95,
    "valor": 7.95,
    "categoria": "Reembolso Elements"
+  },
+  {
+   "transacao": "e82299ed-b81f-4f1c-a740-762a1fbb2817",
+   "data": "2026-11-08",
+   "loja": "DISTROKID",
+   "valor_total": 44.99,
+   "valor": 44.99,
+   "categoria": "PIBA Brand"
+  },
+  {
+   "transacao": "fef1ca6b-95f4-4744-b123-b80bdcc9ac97",
+   "data": "2026-11-08",
+   "loja": "IOF DE COMPRA INTERNACIONAL",
+   "valor_total": 9.01,
+   "valor": 9.01,
+   "categoria": "PIBA Brand"
   }
  ],
  "provisorios": [
