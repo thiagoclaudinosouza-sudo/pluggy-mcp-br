@@ -115,20 +115,12 @@
  ],
  "provisorios": [
   {
-   "id": "bistek-2026-11-08",
-   "data": "2026-11-08",
+   "id": "mercado-2026-11-17",
+   "data": "2026-11-17",
    "conta": "fbb02ba7-bbdd-4c4b-b936-0669b2f57f65",
-   "valor": 516.42,
-   "descricao": "BISTEK SUPERMERCADOS (aguardando banco)",
+   "valor": 41.08,
+   "descricao": "SUPERMERCADO café da manhã e almoço (aguardando banco)",
    "categoria_banco": "Groceries"
-  },
-  {
-   "id": "parafusadeira-2026-11-08",
-   "data": "2026-11-08",
-   "conta": "5ecd3eb3-8e2f-4ee9-8470-f33d06fbded5",
-   "valor": 367.0,
-   "descricao": "MERCADO*MERCADOLIVRE (aguardando banco)",
-   "categoria_banco": ""
   }
  ]
 }
