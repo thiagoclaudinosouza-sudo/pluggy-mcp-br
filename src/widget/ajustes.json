@@ -121,6 +121,14 @@
    "valor": 41.08,
    "descricao": "SUPERMERCADO café da manhã e almoço (aguardando banco)",
    "categoria_banco": "Groceries"
+  },
+  {
+   "id": "ok-2026-11-17",
+   "data": "2026-11-17",
+   "conta": "fbb02ba7-bbdd-4c4b-b936-0669b2f57f65",
+   "valor": 9.2,
+   "descricao": "OK SUPERMERCADO pão de hambúrguer (aguardando banco)",
+   "categoria_banco": "Groceries"
   }
  ]
 }
