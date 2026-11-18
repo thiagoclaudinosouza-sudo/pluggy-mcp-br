@@ -145,6 +145,14 @@
    "valor": 21.85,
    "descricao": "ANGELONI tapioca e barra de proteína (aguardando banco)",
    "categoria_banco": "Groceries"
+  },
+  {
+   "id": "panvel-2026-11-16",
+   "data": "2026-11-16",
+   "conta": "fbb02ba7-bbdd-4c4b-b936-0669b2f57f65",
+   "valor": 30.59,
+   "descricao": "DIMED Panvel (aguardando banco)",
+   "categoria_banco": "Pharmacy"
   }
  ]
 }
