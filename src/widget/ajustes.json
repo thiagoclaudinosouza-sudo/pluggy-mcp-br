@@ -111,6 +111,14 @@
    "valor_total": 9.01,
    "valor": 9.01,
    "categoria": "PIBA Brand"
+  },
+  {
+   "transacao": "",
+   "data": "2026-11-17",
+   "loja": "ANGELONI",
+   "valor_total": 41.08,
+   "valor": 41.08,
+   "categoria": "Comer fora e iFood"
   }
  ],
  "provisorios": [
@@ -119,7 +127,7 @@
    "data": "2026-11-17",
    "conta": "fbb02ba7-bbdd-4c4b-b936-0669b2f57f65",
    "valor": 41.08,
-   "descricao": "SUPERMERCADO café da manhã e almoço (aguardando banco)",
+   "descricao": "ANGELONI espaguete e refeição pronta (aguardando banco)",
    "categoria_banco": "Groceries"
   },
   {
@@ -128,6 +136,14 @@
    "conta": "fbb02ba7-bbdd-4c4b-b936-0669b2f57f65",
    "valor": 9.2,
    "descricao": "OK SUPERMERCADO pão de hambúrguer (aguardando banco)",
+   "categoria_banco": "Groceries"
+  },
+  {
+   "id": "angeloni-2026-11-17b",
+   "data": "2026-11-17",
+   "conta": "fbb02ba7-bbdd-4c4b-b936-0669b2f57f65",
+   "valor": 21.85,
+   "descricao": "ANGELONI tapioca e barra de proteína (aguardando banco)",
    "categoria_banco": "Groceries"
   }
  ]
