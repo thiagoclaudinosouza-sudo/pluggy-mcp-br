@@ -1,158 +1,134 @@
 {
- "divisoes": [
-  {
-   "transacao": "a75eb901-954a-4631-b0e2-df99a23f6e8c",
-   "data": "2026-11-03",
-   "loja": "DIMED",
-   "valor_total": 108.17,
-   "valor": 8.0,
-   "categoria": "Comer fora e iFood"
-  },
-  {
-   "transacao": "f9806397-0e06-4434-905a-1ca2d255eeef",
-   "data": "2026-11-01",
-   "loja": "MERCADOLIVRE",
-   "valor_total": 232.0,
-   "valor": 232.0,
-   "categoria": "Compras e parcelas"
-  },
-  {
-   "transacao": "a1de8baf-98cd-46b5-96a3-02e5ed54659c",
-   "data": "2026-11-01",
-   "loja": "MERCADOLI",
-   "valor_total": 47.92,
-   "valor": 47.92,
-   "categoria": "Casa e compras"
-  },
-  {
-   "transacao": "975be981-8585-40ff-9830-f6ffe9724eeb",
-   "data": "2026-11-01",
-   "loja": "AMAZON",
-   "valor_total": 28.5,
-   "valor": 28.5,
-   "categoria": "Casa e compras"
-  },
-  {
-   "transacao": "",
-   "data": "2026-11-08",
-   "loja": "BISTEK",
-   "valor_total": 516.42,
-   "valor": 37.66,
-   "categoria": "Comer fora e iFood"
-  },
-  {
-   "transacao": "",
-   "data": "2026-11-08",
-   "loja": "MERCADO",
-   "valor_total": 367.0,
-   "valor": 367.0,
-   "categoria": "Casa e compras"
-  },
-  {
-   "transacao": "4c5ba6df-fb86-480e-889b-72fd6d772caf",
-   "data": "2026-11-13",
-   "loja": "UBER",
-   "valor_total": 172.96,
-   "valor": 172.96,
-   "categoria": "Reembolso Elements"
-  },
-  {
-   "transacao": "5d8bd61a-bea3-4d9b-ab95-8bd6083bed40",
-   "data": "2026-11-13",
-   "loja": "RESTAURANTEE",
-   "valor_total": 65.0,
-   "valor": 65.0,
-   "categoria": "Reembolso Elements"
-  },
-  {
-   "transacao": "9d9fb4bd-24c7-44bb-a03f-a1c6abf4382c",
-   "data": "2026-11-13",
-   "loja": "MARIA DE NAZARE",
-   "valor_total": 51.49,
-   "valor": 51.49,
-   "categoria": "Reembolso Elements"
-  },
-  {
-   "transacao": "f4bbaf40-22be-4371-815e-38095372dcfa",
-   "data": "2026-11-13",
-   "loja": "SIM REDE",
-   "valor_total": 44.29,
-   "valor": 44.29,
-   "categoria": "Reembolso Elements"
-  },
-  {
-   "transacao": "",
-   "data": "2026-11-13",
-   "loja": "UBER",
-   "valor_total": 7.94,
-   "valor": 7.94,
-   "categoria": "Reembolso Elements"
-  },
-  {
-   "transacao": "",
-   "data": "2026-11-13",
-   "loja": "UBER",
-   "valor_total": 7.95,
-   "valor": 7.95,
-   "categoria": "Reembolso Elements"
-  },
-  {
-   "transacao": "e82299ed-b81f-4f1c-a740-762a1fbb2817",
-   "data": "2026-11-08",
-   "loja": "DISTROKID",
-   "valor_total": 44.99,
-   "valor": 44.99,
-   "categoria": "PIBA Brand"
-  },
-  {
-   "transacao": "fef1ca6b-95f4-4744-b123-b80bdcc9ac97",
-   "data": "2026-11-08",
-   "loja": "IOF DE COMPRA INTERNACIONAL",
-   "valor_total": 9.01,
-   "valor": 9.01,
-   "categoria": "PIBA Brand"
-  },
-  {
-   "transacao": "",
-   "data": "2026-11-17",
-   "loja": "ANGELONI",
-   "valor_total": 41.08,
-   "valor": 41.08,
-   "categoria": "Comer fora e iFood"
-  }
- ],
- "provisorios": [
-  {
-   "id": "mercado-2026-11-17",
-   "data": "2026-11-17",
-   "conta": "fbb02ba7-bbdd-4c4b-b936-0669b2f57f65",
-   "valor": 41.08,
-   "descricao": "ANGELONI espaguete e refeição pronta (aguardando banco)",
-   "categoria_banco": "Groceries"
-  },
-  {
-   "id": "ok-2026-11-17",
-   "data": "2026-11-17",
-   "conta": "fbb02ba7-bbdd-4c4b-b936-0669b2f57f65",
-   "valor": 9.2,
-   "descricao": "OK SUPERMERCADO pão de hambúrguer (aguardando banco)",
-   "categoria_banco": "Groceries"
-  },
-  {
-   "id": "angeloni-2026-11-17b",
-   "data": "2026-11-17",
-   "conta": "fbb02ba7-bbdd-4c4b-b936-0669b2f57f65",
-   "valor": 21.85,
-   "descricao": "ANGELONI tapioca e barra de proteína (aguardando banco)",
-   "categoria_banco": "Groceries"
-  },
-  {
-   "id": "panvel-2026-11-16",
-   "data": "2026-11-16",
-   "conta": "fbb02ba7-bbdd-4c4b-b936-0669b2f57f65",
-   "valor": 30.59,
-   "descricao": "DIMED Panvel (aguardando banco)",
-   "categoria_banco": "Pharmacy"
-  }
- ]
+  "divisoes": [
+    {
+      "transacao": "a75eb901-954a-4631-b0e2-df99a23f6e8c",
+      "data": "2026-11-03",
+      "loja": "DIMED",
+      "valor_total": 108.17,
+      "valor": 8.0,
+      "categoria": "Comer fora e iFood"
+    },
+    {
+      "transacao": "f9806397-0e06-4434-905a-1ca2d255eeef",
+      "data": "2026-11-01",
+      "loja": "MERCADOLIVRE",
+      "valor_total": 232.0,
+      "valor": 232.0,
+      "categoria": "Compras e parcelas"
+    },
+    {
+      "transacao": "a1de8baf-98cd-46b5-96a3-02e5ed54659c",
+      "data": "2026-11-01",
+      "loja": "MERCADOLI",
+      "valor_total": 47.92,
+      "valor": 47.92,
+      "categoria": "Casa e compras"
+    },
+    {
+      "transacao": "975be981-8585-40ff-9830-f6ffe9724eeb",
+      "data": "2026-11-01",
+      "loja": "AMAZON",
+      "valor_total": 28.5,
+      "valor": 28.5,
+      "categoria": "Casa e compras"
+    },
+    {
+      "transacao": "",
+      "data": "2026-11-08",
+      "loja": "BISTEK",
+      "valor_total": 516.42,
+      "valor": 37.66,
+      "categoria": "Comer fora e iFood"
+    },
+    {
+      "transacao": "",
+      "data": "2026-11-08",
+      "loja": "MERCADO",
+      "valor_total": 367.0,
+      "valor": 367.0,
+      "categoria": "Casa e compras"
+    },
+    {
+      "transacao": "4c5ba6df-fb86-480e-889b-72fd6d772caf",
+      "data": "2026-11-13",
+      "loja": "UBER",
+      "valor_total": 172.96,
+      "valor": 172.96,
+      "categoria": "Reembolso Elements"
+    },
+    {
+      "transacao": "5d8bd61a-bea3-4d9b-ab95-8bd6083bed40",
+      "data": "2026-11-13",
+      "loja": "RESTAURANTEE",
+      "valor_total": 65.0,
+      "valor": 65.0,
+      "categoria": "Reembolso Elements"
+    },
+    {
+      "transacao": "9d9fb4bd-24c7-44bb-a03f-a1c6abf4382c",
+      "data": "2026-11-13",
+      "loja": "MARIA DE NAZARE",
+      "valor_total": 51.49,
+      "valor": 51.49,
+      "categoria": "Reembolso Elements"
+    },
+    {
+      "transacao": "f4bbaf40-22be-4371-815e-38095372dcfa",
+      "data": "2026-11-13",
+      "loja": "SIM REDE",
+      "valor_total": 44.29,
+      "valor": 44.29,
+      "categoria": "Reembolso Elements"
+    },
+    {
+      "transacao": "",
+      "data": "2026-11-13",
+      "loja": "UBER",
+      "valor_total": 7.94,
+      "valor": 7.94,
+      "categoria": "Reembolso Elements"
+    },
+    {
+      "transacao": "",
+      "data": "2026-11-13",
+      "loja": "UBER",
+      "valor_total": 7.95,
+      "valor": 7.95,
+      "categoria": "Reembolso Elements"
+    },
+    {
+      "transacao": "e82299ed-b81f-4f1c-a740-762a1fbb2817",
+      "data": "2026-11-08",
+      "loja": "DISTROKID",
+      "valor_total": 44.99,
+      "valor": 44.99,
+      "categoria": "PIBA Brand"
+    },
+    {
+      "transacao": "fef1ca6b-95f4-4744-b123-b80bdcc9ac97",
+      "data": "2026-11-08",
+      "loja": "IOF DE COMPRA INTERNACIONAL",
+      "valor_total": 9.01,
+      "valor": 9.01,
+      "categoria": "PIBA Brand"
+    },
+    {
+      "transacao": "",
+      "data": "2026-11-17",
+      "loja": "ANGELONI",
+      "valor_total": 41.08,
+      "valor": 41.08,
+      "categoria": "Comer fora e iFood"
+    }
+  ],
+  "provisorios": [
+    {
+      "id": "bistek-2026-11-22",
+      "data": "2026-11-22",
+      "conta": "fbb02ba7-bbdd-4c4b-b936-0669b2f57f65",
+      "valor": 281.99,
+      "descricao": "BISTEK carnes, lasanha, tapioca e hortifruti (aguardando banco)",
+      "categoria_banco": "Groceries"
+    }
+  ]
 }
